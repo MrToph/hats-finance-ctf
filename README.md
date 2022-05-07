@@ -1,6 +1,6 @@
 # Solutions to Hats Challenge #1
 
-- [Hats Challeng #1](https://github.com/hats-finance/games/tree/156959275b9803a022d2b919a25b9f2569c832b6)
+- [Hats Challenge #1](https://github.com/hats-finance/games/tree/156959275b9803a022d2b919a25b9f2569c832b6)
 
 
 ## Capture the Flag
