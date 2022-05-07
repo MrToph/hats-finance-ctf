@@ -21,4 +21,15 @@ contract GameTest is Test {
 
         assertEq(game.flagHolder(), address(solution));
     }
+
+
+    function onERC721Received(
+        address operator,
+        address from,
+        uint256 tokenId,
+        bytes calldata data
+    ) external returns (bytes4) {
+        // we assume that the flagHolder (this contract) is an EOA or a contract that accepts the ERC20
+        return IERC721Receiver.onERC721Received.selector;
+    }
 }

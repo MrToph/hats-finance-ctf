@@ -66,6 +66,7 @@ contract Game is ERC721 {
     for (uint8 i = 0; i < DECK_SIZE; i++) {
       uint8 element = randomGen(3);
       // if the first player wins, burn the Mon of the second player
+      // @audit-info returns `true` if deck0[i] won
       if (_fight(deck0[i], deck1[i], element)) {
         _burn(deck1[i]);
       } else {
@@ -143,7 +144,10 @@ contract Game is ERC721 {
     require(forSale[_monId2], "Cannot swap a Mon that is not for sale");
     require(swapper != _to, "Cannot swap a Mon with yourself");
 
+    // @audit-info checks if swapper owns _monId1
     _safeTransfer(swapper, _to, _monId1, "");
+    // @audit-info checks if _to owns _monId2
+    // @audit-issue swapper is given back control here
     _safeTransfer(_to, swapper, _monId2, "");
 
     // update the decks
